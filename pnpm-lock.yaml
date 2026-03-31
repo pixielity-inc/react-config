@@ -21,7 +21,7 @@ importers:
         specifier: workspace:*
         version: link:../../packages/config
       '@abdokouta/react-di':
-        specifier: ^2.1.0
+        specifier: ^2.0.0
         version: 2.1.0(react@19.2.4)
       '@heroui/react':
         specifier: 3.0.1
@@ -130,10 +130,10 @@ importers:
   packages/config:
     dependencies:
       '@abdokouta/react-di':
-        specifier: ^2.1.0
+        specifier: ^2.0.0
         version: 2.1.0(react@19.2.4)
       '@abdokouta/react-support':
-        specifier: ^1.1.0
+        specifier: ^1.0.0
         version: 1.1.0(@abdokouta/react-di@2.1.0(react@19.2.4))
     devDependencies:
       '@nesvel/eslint-config':
