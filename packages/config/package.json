@@ -2,6 +2,21 @@
   "name": "@abdokouta/react-config",
   "version": "1.0.1",
   "description": "NestJS-inspired configuration management with multiple drivers (Env, File, Firebase) for React",
+  "license": "MIT",
+  "author": {
+    "name": "Abdelrhman Kouta",
+    "email": "abdelrhman@pixielity.com",
+    "url": "https://github.com/abdokouta"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abdokouta/config.git",
+    "directory": "packages/config"
+  },
+  "bugs": {
+    "url": "https://github.com/abdokouta/config/issues"
+  },
+  "homepage": "https://github.com/abdokouta/config#readme",
   "keywords": [
     "react",
     "config",
@@ -9,17 +24,11 @@
     "environment",
     "nestjs",
     "env",
-    "dotenv"
+    "dotenv",
+    "dependency-injection",
+    "di"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pixielity-inc/react-config.git"
-  },
-  "license": "MIT",
-  "author": "Refine",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -32,14 +41,29 @@
       "require": "./dist/vite-plugin.js"
     }
   },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "config",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "test": "vitest --run",
+    "clean": "rm -rf dist node_modules/.cache",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest --run --coverage",
-    "test:ui": "vitest --ui",
-    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json}\""
+    "test:coverage": "vitest run --coverage",
+    "prepublishOnly": "pnpm run build",
+    "release": "pnpm publish --access public --no-git-checks"
   },
   "dependencies": {
     "@abdokouta/react-di": "^2.0.0",
@@ -47,7 +71,7 @@
   },
   "peerDependencies": {
     "dotenv": "^16.0.0",
-    "vite": "^5.0.0"
+    "vite": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0"
   },
   "peerDependenciesMeta": {
     "dotenv": {
@@ -73,6 +97,12 @@
     "vitest": "^4.1.2"
   },
   "publishConfig": {
-    "access": "public"
-  }
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "sideEffects": false
 }
