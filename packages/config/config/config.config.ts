@@ -1,39 +1,39 @@
 /**
  * Config Package Configuration
- * 
+ *
  * Configuration for the @abdokouta/config package.
  * Defines how environment variables are loaded and accessed.
- * 
+ *
  * @module config/config
  */
 
-import type { ConfigModuleOptions } from '@abdokouta/config';
+import { defineConfig } from '@abdokouta/config';
 
 /**
  * Config Configuration
- * 
+ *
  * Settings:
  * - driver: 'env' (reads from process.env)
  * - ignoreEnvFile: true (don't load .env file in browser)
  * - isGlobal: true (available to all modules)
  * - envPrefix: 'auto' (auto-detect and strip VITE_ or NEXT_PUBLIC_ prefix)
- * 
+ *
  * With envPrefix: 'auto', you can access:
  * - VITE_APP_NAME as APP_NAME
  * - NEXT_PUBLIC_API_URL as API_URL
- * 
+ *
  * @example
  * ```typescript
  * // In app.module.ts
  * import { configConfig } from '@/config/config.config';
- * 
+ *
  * @Module({
  *   imports: [ConfigModule.forRoot(configConfig)],
  * })
  * export class AppModule {}
  * ```
  */
-export const configConfig: ConfigModuleOptions = {
+export const configConfig = defineConfig({
   /**
    * Driver to use for loading configuration
    * 'env' reads from process.env
@@ -59,4 +59,4 @@ export const configConfig: ConfigModuleOptions = {
    * So VITE_APP_NAME becomes accessible as APP_NAME
    */
   envPrefix: 'auto',
-};
+});

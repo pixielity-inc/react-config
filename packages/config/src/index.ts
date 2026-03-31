@@ -88,5 +88,6 @@ export type { ViteConfigPluginOptions } from './interfaces/vite-config-plugin-op
 // ============================================================================
 // Utilities
 // ============================================================================
+export { defineConfig } from './utils/define-config.util';
 export { getNestedValue, hasNestedValue } from './utils/get-nested-value.util';
 export { loadConfigFile } from './utils/load-config-file.util';
