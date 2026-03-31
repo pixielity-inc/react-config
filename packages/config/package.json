@@ -1,6 +1,6 @@
 {
   "name": "@abdokouta/react-config",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "NestJS-inspired configuration management with multiple drivers (Env, File, Firebase) for React",
   "keywords": [
     "react",
@@ -42,8 +42,8 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json}\""
   },
   "dependencies": {
-    "@abdokouta/react-support": "^1.0.0",
-    "@abdokouta/react-di": "^2.0.0"
+    "@abdokouta/react-di": "^2.0.0",
+    "@abdokouta/react-support": "^1.0.0"
   },
   "peerDependencies": {
     "dotenv": "^16.0.0",
@@ -65,6 +65,7 @@
     "@types/node": "^25.5.0",
     "@vitest/ui": "^4.1.2",
     "dotenv": "^17.3.1",
+    "jsdom": "^29.0.1",
     "prettier": "^3.8.1",
     "tsup": "^8.5.1",
     "typescript": "^6.0.2",
