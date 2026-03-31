@@ -42,8 +42,8 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json}\""
   },
   "dependencies": {
-    "@abdokouta/react-support": "^1.1.0",
-    "@abdokouta/react-di": "^2.1.0"
+    "@abdokouta/react-support": "^1.0.0",
+    "@abdokouta/react-di": "^2.0.0"
   },
   "peerDependencies": {
     "dotenv": "^16.0.0",

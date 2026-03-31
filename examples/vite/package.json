@@ -10,8 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@abdokouta/react-di": "^2.1.0",
-    "@abdokouta/react-config": "^1.0.0",
+    "@abdokouta/react-di": "^2.0.0",
+    "@abdokouta/react-config": "workspace:*",
     "@heroui/react": "3.0.1",
     "@heroui/styles": "3.0.1",
     "clsx": "2.1.1",
