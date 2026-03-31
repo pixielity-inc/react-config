@@ -1,8 +1,8 @@
-import { Inject, Injectable } from "@abdokouta/react-di";
+import { Inject, Injectable } from '@abdokouta/react-di';
 
-import { CONFIG_DRIVER } from "@/constants/tokens.constant";
-import type { ConfigDriver } from "@/interfaces/config-driver.interface";
-import type { ConfigServiceInterface } from "@/interfaces/config-service.interface";
+import { CONFIG_DRIVER } from '@/constants/tokens.constant';
+import type { ConfigDriver } from '@/interfaces/config-driver.interface';
+import type { ConfigServiceInterface } from '@/interfaces/config-service.interface';
 
 /**
  * Configuration Service
@@ -29,7 +29,7 @@ import type { ConfigServiceInterface } from "@/interfaces/config-service.interfa
 export class ConfigService implements ConfigServiceInterface {
   constructor(
     @Inject(CONFIG_DRIVER)
-    private driver: ConfigDriver,
+    private driver: ConfigDriver
   ) {}
 
   /**
@@ -97,10 +97,10 @@ export class ConfigService implements ConfigServiceInterface {
     if (value === undefined) {
       return undefined;
     }
-    if (typeof value === "boolean") {
+    if (typeof value === 'boolean') {
       return value;
     }
-    return ["true", "1", "yes", "on"].includes(String(value).toLowerCase());
+    return ['true', '1', 'yes', 'on'].includes(String(value).toLowerCase());
   }
 
   /**
@@ -126,7 +126,7 @@ export class ConfigService implements ConfigServiceInterface {
       return value.map(String);
     }
     return String(value)
-      .split(",")
+      .split(',')
       .map((v) => v.trim())
       .filter(Boolean);
   }
@@ -139,7 +139,7 @@ export class ConfigService implements ConfigServiceInterface {
     if (value === undefined) {
       return undefined;
     }
-    if (typeof value === "object") {
+    if (typeof value === 'object') {
       return value as T;
     }
     try {

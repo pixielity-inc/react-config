@@ -10,9 +10,7 @@
  * @param filePath - Absolute path to the config file
  * @returns Parsed config object
  */
-export async function loadConfigFile(
-  filePath: string
-): Promise<Record<string, any>> {
+export async function loadConfigFile(filePath: string): Promise<Record<string, any>> {
   try {
     // Dynamic import of the config file
     // @ts-ignore - Dynamic import path
@@ -28,10 +26,7 @@ export async function loadConfigFile(
 
     return config;
   } catch (error) {
-    console.warn(
-      `[vite-plugin-config] Failed to load config file: ${filePath}`,
-      error
-    );
+    console.warn(`[vite-plugin-config] Failed to load config file: ${filePath}`, error);
     return {};
   }
 }

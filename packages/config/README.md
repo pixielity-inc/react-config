@@ -1,6 +1,7 @@
 # @abdokouta/config
 
-NestJS-inspired configuration management with multiple drivers (Env, File, Firebase) for Refine applications.
+NestJS-inspired configuration management with multiple drivers (Env, File,
+Firebase) for Refine applications.
 
 ## Features
 

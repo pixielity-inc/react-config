@@ -1,6 +1,6 @@
 /**
  * Configuration Driver Interface
- * 
+ *
  * Defines the contract for configuration drivers (env, file, firebase, etc.)
  */
 export interface ConfigDriver {

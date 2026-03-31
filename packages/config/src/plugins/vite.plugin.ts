@@ -3,26 +3,26 @@
  *
  * Simple plugin that receives env from Vite's loadEnv and injects it into the browser.
  * Does NOT apply any business logic - that's handled by ConfigService.
- * 
+ *
  * Responsibilities:
  * 1. Receive environment variables from Vite's loadEnv (passed via options)
  * 2. Inject them into window.__APP_CONFIG__ (or custom global name)
  * 3. Optionally scan and collect .config.ts files
- * 
+ *
  * ConfigService will then query from window.__APP_CONFIG__ and apply:
  * - Prefix stripping
  * - Type conversion
  * - Validation
  * - Defaults
- * 
+ *
  * Usage:
  * ```ts
  * import { defineConfig, loadEnv } from 'vite'
  * import { viteConfigPlugin } from '@abdokouta/config/vite-plugin'
- * 
+ *
  * export default defineConfig(({ mode }) => {
  *   const env = loadEnv(mode, 'environments', '')
- *   
+ *
  *   return {
  *     plugins: [
  *       viteConfigPlugin({ env })
@@ -40,7 +40,7 @@ import { loadConfigFile } from '@/utils/load-config-file.util';
 
 /**
  * Vite plugin that injects environment variables into the browser
- * 
+ *
  * This plugin is DUMB - it just receives env and injects it.
  * ConfigService is SMART - it queries and applies business logic.
  */
@@ -67,7 +67,7 @@ export function viteConfigPlugin(options: ViteConfigPluginOptions = {}): Plugin 
         });
 
         console.log('[vite-plugin-config] Found config files:', configFiles.length);
-        
+
         // Load all config files and merge them
         for (const file of configFiles) {
           const fileConfig = await loadConfigFile(file);
@@ -96,7 +96,10 @@ export function viteConfigPlugin(options: ViteConfigPluginOptions = {}): Plugin 
 
       console.log('[vite-plugin-config] Injecting environment variables into HTML');
       console.log('[vite-plugin-config] Total variables:', Object.keys(finalConfig).length);
-      console.log('[vite-plugin-config] Sample keys:', Object.keys(finalConfig).filter(k => k.includes('APP') || k.includes('VITE')));
+      console.log(
+        '[vite-plugin-config] Sample keys:',
+        Object.keys(finalConfig).filter((k) => k.includes('APP') || k.includes('VITE'))
+      );
       console.log('[vite-plugin-config] Global name:', globalName);
 
       // Inject script into HTML head

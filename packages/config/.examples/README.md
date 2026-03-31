@@ -1,12 +1,14 @@
 # Config Examples
 
-This folder contains examples demonstrating how to use `@abdokouta/config` in various scenarios.
+This folder contains examples demonstrating how to use `@abdokouta/config` in
+various scenarios.
 
 ## Examples Overview
 
 ### 1. Basic Usage (`01-basic-usage.ts`)
 
 Learn the fundamental configuration operations:
+
 - ✅ Environment variable access
 - ✅ Type-safe getters (getString, getNumber, getBool)
 - ✅ Default values
@@ -15,6 +17,7 @@ Learn the fundamental configuration operations:
 - ✅ Array values
 
 **Run:**
+
 ```bash
 ts-node examples/01-basic-usage.ts
 ```
@@ -22,6 +25,7 @@ ts-node examples/01-basic-usage.ts
 ### 2. Multiple Drivers (`02-multiple-drivers.ts`)
 
 Work with different configuration drivers:
+
 - ✅ Environment driver (dotenv)
 - ✅ File driver (TypeScript/JSON)
 - ✅ Switching between drivers
@@ -29,6 +33,7 @@ Work with different configuration drivers:
 - ✅ Configuration merging
 
 **Run:**
+
 ```bash
 ts-node examples/02-multiple-drivers.ts
 ```
@@ -36,6 +41,7 @@ ts-node examples/02-multiple-drivers.ts
 ### 3. Env Helper (`03-env-helper.ts`)
 
 Use the standalone Env utility:
+
 - ✅ Direct environment access
 - ✅ Type conversions
 - ✅ No service injection needed
@@ -43,6 +49,7 @@ Use the standalone Env utility:
 - ✅ Quick access patterns
 
 **Run:**
+
 ```bash
 ts-node examples/03-env-helper.ts
 ```
@@ -120,7 +127,9 @@ const features = {
 ### 4. Array Configuration
 
 ```typescript
-const allowedOrigins = config.getArray('CORS_ORIGINS', ['http://localhost:3000']);
+const allowedOrigins = config.getArray('CORS_ORIGINS', [
+  'http://localhost:3000',
+]);
 const trustedProxies = config.getArray('TRUSTED_PROXIES', []);
 ```
 
@@ -194,7 +203,7 @@ const logLevel = config.getString(
 ```typescript
 function validateConfig(config: ConfigService) {
   const required = ['DB_HOST', 'DB_USER', 'DB_PASSWORD', 'API_KEY'];
-  
+
   for (const key of required) {
     if (!config.has(key)) {
       throw new Error(`Missing required configuration: ${key}`);
@@ -214,7 +223,7 @@ ConfigModule.forRoot({
   ignoreEnvFile: false,
   expandVariables: true,
   isGlobal: true,
-})
+});
 ```
 
 ### File Driver
@@ -232,7 +241,7 @@ ConfigModule.forRoot({
     },
   },
   isGlobal: true,
-})
+});
 ```
 
 ### Custom Configuration
@@ -248,7 +257,7 @@ ConfigModule.forRoot({
     },
   },
   isGlobal: true,
-})
+});
 ```
 
 ## Troubleshooting
@@ -277,9 +286,12 @@ ConfigModule.forRoot({
 ## Additional Resources
 
 - [Main README](../README.md) - Package documentation
-- [NestJS Config Documentation](https://docs.nestjs.com/techniques/configuration) - Inspiration
-- [dotenv Documentation](https://github.com/motdotla/dotenv) - Environment variables
+- [NestJS Config Documentation](https://docs.nestjs.com/techniques/configuration) -
+  Inspiration
+- [dotenv Documentation](https://github.com/motdotla/dotenv) - Environment
+  variables
 
 ## Contributing
 
-Found an issue or have a suggestion? Please open an issue or submit a pull request!
+Found an issue or have a suggestion? Please open an issue or submit a pull
+request!

@@ -1,24 +1,24 @@
 /**
  * @fileoverview Tests for ConfigModule
- * 
+ *
  * This test suite verifies the ConfigModule functionality including:
  * - Module registration (forRoot, forRootAsync)
  * - Driver creation and configuration
  * - Custom config merging
  * - Provider setup
- * 
+ *
  * @module @abdokouta/config
  * @category Tests
  */
 
-import { describe, it, expect, beforeEach } from "vitest";
-import { ConfigModule } from "@/config.module";
-import { EnvDriver } from "@/drivers/env.driver";
-import { FileDriver } from "@/drivers/file.driver";
+import { describe, it, expect, beforeEach } from 'vitest';
+import { ConfigModule } from '@/config.module';
+import { EnvDriver } from '@/drivers/env.driver';
+import { FileDriver } from '@/drivers/file.driver';
 
-describe("ConfigModule", () => {
-  describe("forRoot", () => {
-    it("should create a dynamic module with default configuration", () => {
+describe('ConfigModule', () => {
+  describe('forRoot', () => {
+    it('should create a dynamic module with default configuration', () => {
       // Act: Create module with default config
       const module = ConfigModule.forRoot();
 
@@ -29,11 +29,11 @@ describe("ConfigModule", () => {
       expect(module.exports).toBeDefined();
     });
 
-    it("should create module with env driver", () => {
+    it('should create module with env driver', () => {
       // Arrange: Configure env driver
       const options = {
-        driver: "env" as const,
-        envFilePath: ".env.test",
+        driver: 'env' as const,
+        envFilePath: '.env.test',
       };
 
       // Act: Create module
@@ -44,11 +44,11 @@ describe("ConfigModule", () => {
       expect(module.providers).toBeDefined();
     });
 
-    it("should create module with file driver", () => {
+    it('should create module with file driver', () => {
       // Arrange: Configure file driver
       const options = {
-        driver: "file" as const,
-        configPath: "./config",
+        driver: 'file' as const,
+        configPath: './config',
       };
 
       // Act: Create module
@@ -59,17 +59,17 @@ describe("ConfigModule", () => {
       expect(module.providers).toBeDefined();
     });
 
-    it("should merge custom configuration", () => {
+    it('should merge custom configuration', () => {
       // Arrange: Custom config
       const customConfig = {
         app: {
-          name: "Test App",
-          version: "1.0.0",
+          name: 'Test App',
+          version: '1.0.0',
         },
       };
 
       const options = {
-        driver: "env" as const,
+        driver: 'env' as const,
         config: customConfig,
       };
 
@@ -80,10 +80,10 @@ describe("ConfigModule", () => {
       expect(module).toBeDefined();
     });
 
-    it("should set global flag when specified", () => {
+    it('should set global flag when specified', () => {
       // Arrange: Global module config
       const options = {
-        driver: "env" as const,
+        driver: 'env' as const,
         isGlobal: true,
       };
 
@@ -95,12 +95,12 @@ describe("ConfigModule", () => {
     });
   });
 
-  describe("forRootAsync", () => {
-    it("should create async dynamic module", async () => {
+  describe('forRootAsync', () => {
+    it('should create async dynamic module', async () => {
       // Arrange: Async factory
       const useFactory = async () => ({
-        driver: "env" as const,
-        envFilePath: ".env",
+        driver: 'env' as const,
+        envFilePath: '.env',
       });
 
       // Act: Create async module
@@ -113,16 +113,16 @@ describe("ConfigModule", () => {
       expect(module.module).toBe(ConfigModule);
     });
 
-    it("should handle async factory with dependencies", async () => {
+    it('should handle async factory with dependencies', async () => {
       // Arrange: Factory with inject
       const useFactory = async (dep: any) => ({
-        driver: "env" as const,
+        driver: 'env' as const,
       });
 
       // Act: Create async module
       const module = await ConfigModule.forRootAsync({
         useFactory,
-        inject: ["SOME_DEPENDENCY"],
+        inject: ['SOME_DEPENDENCY'],
       });
 
       // Assert: Module is created
@@ -130,8 +130,8 @@ describe("ConfigModule", () => {
     });
   });
 
-  describe("Driver Creation", () => {
-    it("should create EnvDriver by default", () => {
+  describe('Driver Creation', () => {
+    it('should create EnvDriver by default', () => {
       // Act: Create module with no driver specified
       const module = ConfigModule.forRoot({});
 
@@ -139,11 +139,11 @@ describe("ConfigModule", () => {
       expect(module).toBeDefined();
     });
 
-    it("should create FileDriver when specified", () => {
+    it('should create FileDriver when specified', () => {
       // Arrange: File driver config
       const options = {
-        driver: "file" as const,
-        configPath: "./config",
+        driver: 'file' as const,
+        configPath: './config',
       };
 
       // Act: Create module
@@ -153,11 +153,11 @@ describe("ConfigModule", () => {
       expect(module).toBeDefined();
     });
 
-    it("should pass driver options correctly", () => {
+    it('should pass driver options correctly', () => {
       // Arrange: Driver with options
       const options = {
-        driver: "env" as const,
-        envFilePath: ".env.custom",
+        driver: 'env' as const,
+        envFilePath: '.env.custom',
         expandVariables: true,
       };
 
@@ -169,21 +169,21 @@ describe("ConfigModule", () => {
     });
   });
 
-  describe("Configuration Merging", () => {
-    it("should merge multiple config sources", () => {
+  describe('Configuration Merging', () => {
+    it('should merge multiple config sources', () => {
       // Arrange: Multiple configs
       const customConfig = {
         database: {
-          host: "localhost",
+          host: 'localhost',
           port: 5432,
         },
         cache: {
-          driver: "redis",
+          driver: 'redis',
         },
       };
 
       const options = {
-        driver: "env" as const,
+        driver: 'env' as const,
         config: customConfig,
       };
 
@@ -194,15 +194,15 @@ describe("ConfigModule", () => {
       expect(module).toBeDefined();
     });
 
-    it("should handle nested configuration objects", () => {
+    it('should handle nested configuration objects', () => {
       // Arrange: Nested config
       const customConfig = {
         app: {
-          name: "Test",
+          name: 'Test',
           features: {
             auth: true,
             api: {
-              version: "v1",
+              version: 'v1',
               timeout: 5000,
             },
           },
@@ -221,8 +221,8 @@ describe("ConfigModule", () => {
     });
   });
 
-  describe("Module Exports", () => {
-    it("should export ConfigService", () => {
+  describe('Module Exports', () => {
+    it('should export ConfigService', () => {
       // Act: Create module
       const module = ConfigModule.forRoot();
 
@@ -231,7 +231,7 @@ describe("ConfigModule", () => {
       expect(Array.isArray(module.exports)).toBe(true);
     });
 
-    it("should provide all necessary providers", () => {
+    it('should provide all necessary providers', () => {
       // Act: Create module
       const module = ConfigModule.forRoot();
 

@@ -1,6 +1,6 @@
 /**
  * Configuration Service Interface
- * 
+ *
  * Defines the contract for configuration service implementations.
  */
 export interface ConfigServiceInterface {

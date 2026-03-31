@@ -3,7 +3,7 @@ import { getNestedValue, hasNestedValue } from '../utils/get-nested-value.util';
 
 /**
  * Environment Variable Configuration Driver
- * 
+ *
  * Loads configuration from environment variables (process.env).
  * Supports .env files via dotenv.
  */
@@ -44,26 +44,40 @@ export class EnvDriver implements ConfigDriver {
     // Try to load from custom global variable first (browser environment)
     if (typeof window !== 'undefined' && (window as any)[globalName]) {
       this.config = { ...(window as any)[globalName] };
-      console.log(`[EnvDriver] Loaded config from window.${globalName}:`, Object.keys(this.config).length, 'keys');
+      console.log(
+        `[EnvDriver] Loaded config from window.${globalName}:`,
+        Object.keys(this.config).length,
+        'keys'
+      );
     }
     // Fallback to process.env (Node.js environment or backward compatibility)
     else if (typeof process !== 'undefined' && process.env) {
       this.config = { ...process.env };
-      console.log('[EnvDriver] Loaded config from process.env:', Object.keys(this.config).length, 'keys');
+      console.log(
+        '[EnvDriver] Loaded config from process.env:',
+        Object.keys(this.config).length,
+        'keys'
+      );
     }
     // No config source available
     else {
-      console.warn('[EnvDriver] No config source available (neither window.' + globalName + ' nor process.env)');
+      console.warn(
+        '[EnvDriver] No config source available (neither window.' + globalName + ' nor process.env)'
+      );
       this.config = {};
     }
 
-    console.log('[EnvDriver] Initial config keys:', [...Object.keys(this.config).filter(k => k.includes('APP') || k.includes('VITE'))]);
+    console.log('[EnvDriver] Initial config keys:', [
+      ...Object.keys(this.config).filter((k) => k.includes('APP') || k.includes('VITE')),
+    ]);
 
     // Strip prefix if configured
     if (this.options.envPrefix !== false) {
       console.log('[EnvDriver] Stripping prefix...');
       this.stripPrefix();
-      console.log('[EnvDriver] After stripPrefix, config keys:', [...Object.keys(this.config).filter(k => k.includes('APP') || k.includes('VITE'))]);
+      console.log('[EnvDriver] After stripPrefix, config keys:', [
+        ...Object.keys(this.config).filter((k) => k.includes('APP') || k.includes('VITE')),
+      ]);
     }
 
     // Expand variables if enabled
@@ -159,12 +173,12 @@ export class EnvDriver implements ConfigDriver {
     // Auto-detect framework prefix
     if (prefix === 'auto' || prefix === undefined) {
       // Check for Vite (import.meta.env exists or VITE_ variables present)
-      const hasViteVars = Object.keys(this.config).some(key => key.startsWith('VITE_'));
+      const hasViteVars = Object.keys(this.config).some((key) => key.startsWith('VITE_'));
       if (hasViteVars || typeof import.meta !== 'undefined') {
         prefix = 'VITE_';
       }
       // Check for Next.js (NEXT_PUBLIC_ variables present)
-      else if (Object.keys(this.config).some(key => key.startsWith('NEXT_PUBLIC_'))) {
+      else if (Object.keys(this.config).some((key) => key.startsWith('NEXT_PUBLIC_'))) {
         prefix = 'NEXT_PUBLIC_';
       }
       // No framework detected, don't strip
@@ -176,7 +190,7 @@ export class EnvDriver implements ConfigDriver {
     // Strip the prefix from all matching keys
     if (typeof prefix === 'string' && prefix.length > 0) {
       const newConfig: Record<string, any> = {};
-      
+
       for (const [key, value] of Object.entries(this.config)) {
         if (key.startsWith(prefix)) {
           // Add both prefixed and unprefixed versions
@@ -187,7 +201,7 @@ export class EnvDriver implements ConfigDriver {
           newConfig[key] = value;
         }
       }
-      
+
       this.config = newConfig;
     }
   }

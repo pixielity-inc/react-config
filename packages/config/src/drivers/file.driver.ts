@@ -3,11 +3,11 @@ import { getNestedValue, hasNestedValue } from '@/utils/get-nested-value.util';
 
 /**
  * File-based Configuration Driver
- * 
+ *
  * Loads configuration from TypeScript/JavaScript files.
  * This is a server-side only driver. For client-side, use the Vite plugin.
- * 
- * @see packages/pixielity/config/src/plugins/vite-config.plugin.ts
+ *
+ * @see packages/abdokouta/config/src/plugins/vite-config.plugin.ts
  */
 export class FileDriver implements ConfigDriver {
   private config: Record<string, any> = {};
@@ -35,13 +35,14 @@ export class FileDriver implements ConfigDriver {
     }
 
     // If running on server (Node.js), throw error
-    const isServer = typeof globalThis !== 'undefined' && 
-                     typeof (globalThis as typeof globalThis & { window?: any }).window === 'undefined';
-    
+    const isServer =
+      typeof globalThis !== 'undefined' &&
+      typeof (globalThis as typeof globalThis & { window?: any }).window === 'undefined';
+
     if (isServer) {
       throw new Error(
         'FileDriver requires pre-loaded configuration. ' +
-        'Use Vite plugin for client-side or pass config in constructor for server-side.'
+          'Use Vite plugin for client-side or pass config in constructor for server-side.'
       );
     }
 

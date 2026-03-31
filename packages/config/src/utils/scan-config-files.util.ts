@@ -13,18 +13,14 @@ import type { ViteConfigPluginOptions } from '@/interfaces/vite-config-plugin-op
  * @param options - Plugin options containing scan configuration
  * @returns Array of absolute file paths to config files
  */
-export async function scanConfigFiles(
-  options: ViteConfigPluginOptions
-): Promise<string[]> {
+export async function scanConfigFiles(options: ViteConfigPluginOptions): Promise<string[]> {
   const {
     configFilePattern = 'src/**/*.config.ts',
     excludeDirs = ['node_modules', 'dist', 'build', '.git'],
     root = process.cwd(),
   } = options;
 
-  const patterns = Array.isArray(configFilePattern)
-    ? configFilePattern
-    : [configFilePattern];
+  const patterns = Array.isArray(configFilePattern) ? configFilePattern : [configFilePattern];
   const configFiles: string[] = [];
 
   for (const pattern of patterns) {

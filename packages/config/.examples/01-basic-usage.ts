@@ -1,12 +1,12 @@
 /**
  * Basic Config Usage Example
- * 
+ *
  * This example demonstrates the fundamental configuration operations:
  * - Environment variable access
  * - Type-safe getters
  * - Default values
  * - Nested configuration
- * 
+ *
  * @example
  * Run this example:
  * ```bash
@@ -193,10 +193,12 @@ function getAllConfig(config: ConfigService) {
   console.log('\n=== Example 8: Get All Configuration ===\n');
 
   const allConfig = config.all();
-  const keys = Object.keys(allConfig).filter(k => k.startsWith('APP_') || k.startsWith('ALLOWED_'));
-  
+  const keys = Object.keys(allConfig).filter(
+    (k) => k.startsWith('APP_') || k.startsWith('ALLOWED_')
+  );
+
   console.log('✓ All APP_* and ALLOWED_* configuration:');
-  keys.forEach(key => {
+  keys.forEach((key) => {
     console.log(`  - ${key}: ${allConfig[key]}`);
   });
 }

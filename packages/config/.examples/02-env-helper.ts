@@ -1,9 +1,9 @@
 /**
  * Env Helper Example
- * 
+ *
  * This example demonstrates the standalone Env utility for quick
  * environment variable access without dependency injection.
- * 
+ *
  * @example
  * Run this example:
  * ```bash
@@ -115,10 +115,10 @@ function getAllEnv() {
   console.log('\n=== Example 5: Get All Environment Variables ===\n');
 
   const allEnv = Env.all();
-  const appVars = Object.keys(allEnv).filter(k => k.startsWith('APP_'));
-  
+  const appVars = Object.keys(allEnv).filter((k) => k.startsWith('APP_'));
+
   console.log('✓ All APP_* environment variables:');
-  appVars.forEach(key => {
+  appVars.forEach((key) => {
     console.log(`  - ${key}: ${allEnv[key]}`);
   });
 }

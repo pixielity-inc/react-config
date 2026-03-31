@@ -9,10 +9,10 @@ import { CONFIG_DRIVER, CONFIG_OPTIONS, CONFIG_SERVICE } from './constants/token
 
 /**
  * Configuration Module
- * 
+ *
  * Provides configuration management with multiple drivers.
  * Similar to NestJS ConfigModule.
- * 
+ *
  * @example
  * ```typescript
  * // Using environment variables (default)
@@ -26,7 +26,7 @@ import { CONFIG_DRIVER, CONFIG_OPTIONS, CONFIG_SERVICE } from './constants/token
  * })
  * export class AppModule {}
  * ```
- * 
+ *
  * @example
  * ```typescript
  * // Using file-based configuration
@@ -46,15 +46,15 @@ import { CONFIG_DRIVER, CONFIG_OPTIONS, CONFIG_SERVICE } from './constants/token
 export class ConfigModule {
   /**
    * Register configuration module with options
-   * 
+   *
    * @param options - Configuration options
    * @returns Dynamic module
    */
   static forRoot(options: ConfigModuleOptions = {}): DynamicModule {
     const driver = this.createDriver(options);
-    
+
     const isGlobal = options.isGlobal ?? false;
-    
+
     const providers = [
       {
         provide: CONFIG_OPTIONS,
@@ -83,7 +83,7 @@ export class ConfigModule {
 
   /**
    * Register configuration module asynchronously
-   * 
+   *
    * @param options - Async configuration options
    * @returns Dynamic module
    */
@@ -92,9 +92,7 @@ export class ConfigModule {
       useFactory?: () => Promise<ConfigModuleOptions> | ConfigModuleOptions;
     }
   ): Promise<DynamicModule> {
-    const resolvedOptions = options.useFactory
-      ? await options.useFactory()
-      : options;
+    const resolvedOptions = options.useFactory ? await options.useFactory() : options;
 
     return this.forRoot(resolvedOptions);
   }
@@ -115,12 +113,12 @@ export class ConfigModule {
           globalName: options.globalName,
         });
         envDriver.load();
-        
+
         // Merge custom load function if provided
         if (options.load) {
           this.mergeCustomConfig(envDriver, options.load);
         }
-        
+
         return envDriver;
 
       case 'file':
@@ -142,9 +140,9 @@ export class ConfigModule {
     load: Record<string, any> | (() => Record<string, any> | Promise<Record<string, any>>)
   ): void {
     const customConfig = typeof load === 'function' ? load() : load;
-    
+
     if (customConfig instanceof Promise) {
-      customConfig.then(config => {
+      customConfig.then((config) => {
         Object.assign(driver.all(), config);
       });
     } else {

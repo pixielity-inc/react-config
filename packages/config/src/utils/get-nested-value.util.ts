@@ -1,11 +1,11 @@
 /**
  * Get nested value from object using dot notation
- * 
+ *
  * @param obj - Source object
  * @param path - Dot-notated path (e.g., 'database.host')
  * @param defaultValue - Default value if path not found
  * @returns Value at path or default value
- * 
+ *
  * @example
  * ```typescript
  * const config = { database: { host: 'localhost' } };
@@ -33,15 +33,12 @@ export function getNestedValue<T = any>(
 
 /**
  * Check if nested path exists in object
- * 
+ *
  * @param obj - Source object
  * @param path - Dot-notated path
  * @returns True if path exists
  */
-export function hasNestedValue(
-  obj: Record<string, any>,
-  path: string
-): boolean {
+export function hasNestedValue(obj: Record<string, any>, path: string): boolean {
   const keys = path.split('.');
   let current: any = obj;
 
