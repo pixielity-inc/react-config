@@ -1,6 +1,6 @@
 {
   "name": "@abdokouta/react-config",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "NestJS-inspired configuration management with multiple drivers (Env, File, Firebase) for React",
   "license": "MIT",
   "author": {
