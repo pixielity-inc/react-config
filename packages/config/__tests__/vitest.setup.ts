@@ -19,12 +19,11 @@ import { vi } from 'vitest';
  * This ensures that decorator metadata doesn't interfere with tests
  * and allows us to test module behavior in isolation.
  */
-vi.mock('@abdokouta/react-di', async () => {
-  const actual = await vi.importActual('@abdokouta/react-di');
+vi.mock('@abdokouta/react-di', () => {
   return {
-    ...actual,
     Injectable: () => (target: any) => target,
-    Inject: () => (target: any, propertyKey: string, parameterIndex: number) => {},
-    Module: (metadata: any) => (target: any) => target,
+    Inject: () => (_target: any, _propertyKey: string, _parameterIndex: number) => {},
+    Module: (_metadata: any) => (target: any) => target,
+    DynamicModule: class {},
   };
 });

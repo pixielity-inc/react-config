@@ -39,7 +39,8 @@ export default defineConfig({
     // Fix ESM/CJS compatibility for inversiland
     server: {
       deps: {
-        inline: ['inversiland', '@inversiland/inversify'],
+        inline: ['inversiland', '@inversiland/inversify', '@abdokouta/react-di'],
+        interopDefault: true,
       },
     },
 
