@@ -1,0 +1,77 @@
+{
+  "name": "@abdokouta/react-config",
+  "version": "1.0.0",
+  "description": "NestJS-inspired configuration management with multiple drivers (Env, File, Firebase) for React",
+  "keywords": [
+    "react",
+    "config",
+    "configuration",
+    "environment",
+    "nestjs",
+    "env",
+    "dotenv"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pixielity-inc/react-config.git"
+  },
+  "license": "MIT",
+  "author": "Refine",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./vite-plugin": {
+      "types": "./dist/vite-plugin.d.ts",
+      "import": "./dist/vite-plugin.mjs",
+      "require": "./dist/vite-plugin.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest --run --coverage",
+    "test:ui": "vitest --ui",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json}\""
+  },
+  "dependencies": {
+    "@abdokouta/react-support": "^1.1.0",
+    "@abdokouta/react-di": "^2.1.0"
+  },
+  "peerDependencies": {
+    "dotenv": "^16.0.0",
+    "vite": "^5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "dotenv": {
+      "optional": true
+    },
+    "vite": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@nesvel/eslint-config": "^1.0.5",
+    "@nesvel/prettier-config": "^1.0.3",
+    "@nesvel/tsup-config": "^1.0.3",
+    "@nesvel/typescript-config": "^1.0.4",
+    "@types/node": "^25.5.0",
+    "@vitest/ui": "^4.1.2",
+    "dotenv": "^17.3.1",
+    "prettier": "^3.8.1",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.2",
+    "vite": "^8.0.3",
+    "vitest": "^4.1.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

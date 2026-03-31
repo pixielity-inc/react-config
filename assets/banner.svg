@@ -1,0 +1,67 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="50%" style="stop-color:#1e293b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="50%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
+    </linearGradient>
+    <linearGradient id="configGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#818cf8"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bgGradient)"/>
+  
+  <!-- Grid pattern -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#334155" stroke-width="0.5" opacity="0.3"/>
+  </pattern>
+  <rect width="1200" height="400" fill="url(#grid)"/>
+  
+  <!-- Decorative circles -->
+  <circle cx="100" cy="100" r="150" fill="#6366f1" opacity="0.05"/>
+  <circle cx="1100" cy="300" r="200" fill="#8b5cf6" opacity="0.05"/>
+  <circle cx="600" cy="400" r="180" fill="#a855f7" opacity="0.03"/>
+  
+  <!-- Config/gear icon -->
+  <g transform="translate(150, 200)">
+    <circle cx="0" cy="0" r="25" fill="none" stroke="url(#configGradient)" stroke-width="3" opacity="0.7"/>
+    <circle cx="0" cy="0" r="10" fill="url(#configGradient)" opacity="0.5"/>
+    <!-- Gear teeth -->
+    <rect x="-5" y="-45" width="10" height="15" rx="2" fill="url(#configGradient)" opacity="0.7"/>
+    <rect x="-5" y="30" width="10" height="15" rx="2" fill="url(#configGradient)" opacity="0.7"/>
+    <rect x="-45" y="-5" width="15" height="10" rx="2" fill="url(#configGradient)" opacity="0.7"/>
+    <rect x="30" y="-5" width="15" height="10" rx="2" fill="url(#configGradient)" opacity="0.7"/>
+  </g>
+  
+  <!-- Env file icon -->
+  <g transform="translate(1050, 200)">
+    <rect x="-30" y="-40" width="60" height="80" rx="4" fill="none" stroke="url(#accentGradient)" stroke-width="3" opacity="0.7"/>
+    <text x="0" y="5" text-anchor="middle" font-family="monospace" font-size="16" font-weight="700" fill="url(#accentGradient)" opacity="0.8">.env</text>
+  </g>
+  
+  <!-- Main title -->
+  <text x="600" y="170" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="64" font-weight="700" fill="white">
+    @abdokouta/config
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="230" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#94a3b8">
+    NestJS-inspired Configuration for React
+  </text>
+  
+  <!-- Tagline with gradient -->
+  <text x="600" y="280" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="url(#accentGradient)">
+    Env Driver • File Driver • Type-safe • Vite Plugin
+  </text>
+  
+  <!-- Bottom accent line -->
+  <rect x="400" y="320" width="400" height="4" rx="2" fill="url(#accentGradient)" opacity="0.8"/>
+</svg>
