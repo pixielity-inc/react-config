@@ -75,7 +75,9 @@ export default function ConfigDemoPage() {
         <div className="w-full max-w-4xl space-y-8">
           {/* Interactive Config Tester */}
           <Card className="p-6">
-            <h2 className="text-2xl font-bold mb-4">Interactive Config Tester</h2>
+            <h2 className="text-2xl font-bold mb-4">
+              Interactive Config Tester
+            </h2>
             <p className="text-default-500 mb-4">
               Test different ConfigService methods with any configuration key
             </p>
@@ -117,7 +119,9 @@ export default function ConfigDemoPage() {
             {testResult && (
               <div className="p-4 bg-default-100 rounded-lg">
                 <p className="text-sm font-semibold mb-2">Result:</p>
-                <pre className="text-sm font-mono whitespace-pre-wrap">{testResult}</pre>
+                <pre className="text-sm font-mono whitespace-pre-wrap">
+                  {testResult}
+                </pre>
               </div>
             )}
           </Card>
@@ -166,7 +170,11 @@ export default function ConfigDemoPage() {
                 <p className="text-sm text-default-500 mt-2">
                   Result:{" "}
                   <Chip
-                    color={configService.getBool("APP_DEBUG", false) ? "success" : "default"}
+                    color={
+                      configService.getBool("APP_DEBUG", false)
+                        ? "success"
+                        : "default"
+                    }
                     size="sm"
                     variant="soft"
                   >
@@ -218,7 +226,9 @@ export default function ConfigDemoPage() {
                       <td className="p-2 font-mono text-xs">{key}</td>
                       <td className="p-2">
                         <Chip size="sm" variant="soft">
-                          {typeof value === "object" ? JSON.stringify(value) : String(value)}
+                          {typeof value === "object"
+                            ? JSON.stringify(value)
+                            : String(value)}
                         </Chip>
                       </td>
                       <td className="p-2 text-default-500">{typeof value}</td>
@@ -226,7 +236,10 @@ export default function ConfigDemoPage() {
                   ))}
                   {Object.keys(allConfig).length === 0 && (
                     <tr>
-                      <td className="p-4 text-center text-default-400" colSpan={3}>
+                      <td
+                        className="p-4 text-center text-default-400"
+                        colSpan={3}
+                      >
                         No configuration found. Add VITE_* variables to .env
                       </td>
                     </tr>
@@ -282,7 +295,9 @@ class DatabaseService {
               </div>
 
               <div>
-                <h4 className="font-semibold mb-2">3. Use in React Component</h4>
+                <h4 className="font-semibold mb-2">
+                  3. Use in React Component
+                </h4>
                 <pre className="text-xs bg-default-100 p-3 rounded-lg overflow-x-auto">
                   {`import { useInject } from '@abdokouta/react-di';
 import { CONFIG_SERVICE, ConfigService } from '@abdokouta/config';

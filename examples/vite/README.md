@@ -31,14 +31,14 @@ src/
 ### Module Setup
 
 ```typescript
-import { ConfigModule } from '@abdokouta/config';
+import { ConfigModule } from "@abdokouta/config";
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      driver: 'env',
+      driver: "env",
       isGlobal: true,
-      envPrefix: 'auto',
+      envPrefix: "auto",
     }),
   ],
 })
@@ -48,7 +48,7 @@ export class AppModule {}
 ### Using ConfigService
 
 ```typescript
-import { ConfigService } from '@abdokouta/config';
+import { ConfigService } from "@abdokouta/config";
 
 // In a service
 @Injectable()
@@ -57,9 +57,9 @@ class MyService {
 
   getDbConfig() {
     return {
-      host: this.config.getString('DB_HOST', 'localhost'),
-      port: this.config.getNumber('DB_PORT', 5432),
-      ssl: this.config.getBool('DB_SSL', false),
+      host: this.config.getString("DB_HOST", "localhost"),
+      port: this.config.getNumber("DB_PORT", 5432),
+      ssl: this.config.getBool("DB_SSL", false),
     };
   }
 }
@@ -67,7 +67,7 @@ class MyService {
 // In a React component
 function MyComponent() {
   const config = useInject<ConfigService>(ConfigService);
-  const appName = config.getString('APP_NAME');
+  const appName = config.getString("APP_NAME");
 }
 ```
 

@@ -66,8 +66,7 @@
     "release": "pnpm publish --access public --no-git-checks"
   },
   "dependencies": {
-    "@abdokouta/react-di": "^2.0.0",
-    "@abdokouta/react-support": "^1.0.0"
+    "@abdokouta/ts-container": "^1.2.0"
   },
   "peerDependencies": {
     "dotenv": "^16.0.0",
